@@ -4,6 +4,7 @@
 .site-header {
     border-top: 5px solid $grey-color-dark;
     border-bottom: 1px solid $grey-color-light;
+    padding-left: calc(100vw - 100%);
     min-height: 56px;
 
     // Positioning context for the mobile navigation icon
@@ -163,6 +164,7 @@
  */
 .page-content {
     padding: $spacing-unit 0;
+    padding-left: calc(100vw - 100%);
 }
 
 .page-heading {
