@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Codes
-permalink: /codes/
+title: Astro codes
+permalink: /astro-codes/
 ---
 
 ## EGG: the Empirical Galaxy Generator
