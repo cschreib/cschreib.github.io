@@ -13,7 +13,7 @@ Nowadays, astronomical data are reduced and analyzed exclusively on computers, u
 
 Let us consider, for illustration, a very silly tool I wrote for this article. The tool is called ```blackbox-hypot```. It reads a plain text file containing two numbers ```a``` and ```b``` on each line, and outputs in another plain text file the square root of the sum of  ```a^2``` and ```b^2```, for each pair of numbers. You can get and compile the source code [here](https://github.com/cschreib/cschreib.github.io/tree/master/codes/blackbox-hypot). With the information I just gave you, you can run the program on all the values you want and obtain the most wanted root sum of squares. That's what a tool is.
 
-But is _using_ the tool really _all_ you need? All tools will tell you: "Give me _X_, and I will give you the corresponding _Y_". As scientists, our first reflex should be to doubt. Is it really _Y_ we are given? And if not, how far is the tool from actually giving us the true value of _Y_? The answer to this question is not always easy to obtain, even though it is obviously crucial.
+But is _using_ the tool really _all_ you need? All tools will tell you: "Give me X, and I will give you the corresponding Y". As scientists, our first reflex should be to doubt. Is it really Y we are given? And if not, how far is the tool from actually giving us the true value of Y? The answer to this question is not always easy to obtain, even though it is obviously crucial.
 
 Just from what I told you about ```blackbox-hypot``` above, do you know how accurate its result is? No, not at all. For all you know, the code could return the correct value only within a factor of two. Or a random number.
 
@@ -23,7 +23,7 @@ Scientific tools are very specialized, cutting edge softwares which are used at 
 ## Read the freakin' manual
 (only they usually don't say _freakin'_)
 
-In the ideal case, the author of the tool has written a detailed _specification_. It describes how the tool is supposed to behave, in some form of a contract: "if you give me a _X_ which satisfies this list of criteria, then I can give you an estimate of _Y_ with a precision of _Z_%". This kind of statement is usually found in the documentation of the tool, and suggests that the author has actually performed tests to quantify the accuracy. That's a good thing.
+In the ideal case, the author of the tool has written a detailed _specification_. It describes how the tool is supposed to behave, in some form of a contract: "if you give me a X which satisfies this list of criteria, then I can give you an estimate of Y with a precision of Z%". This kind of statement is usually found in the documentation of the tool, and suggests that the author has actually performed tests to quantify the accuracy. That's a good thing.
 
 If I had written a documentation for ```blackbox-hypot```, I could have written this: "if you provide a pair of any two finite numbers, the code will return the root sum of squares of these numbers with a relative accuracy of 5e-8". That's 0.000005%, not bad huh?
 
