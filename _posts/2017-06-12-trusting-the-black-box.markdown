@@ -62,7 +62,7 @@ Alternatively, in many cases there exists a slower ("brute force") method which 
 
 In the case of ```blackbox-hypot```, we can do the computation by hand down to a precision of our choosing, or carefully perform the computation with a high precision floating point library. I used the latter ([mpfr::real](http://chschneider.eu/programming/mpfr_real/)), because I simply cannot compute square roots on a piece of paper, and tried computing various root sum of squares of randomly generated numbers. Here is the relative error I found:
 
-![Relative error of blackbox-hypot]({{ site.url }}/assets/blog/2017-06-11-trusting-the-black-box/err_normal.png)
+![Relative error of blackbox-hypot]({{ site.url }}/assets/blog/2017-06-12-trusting-the-black-box/err_normal.png)
 
 Black points show the measured difference between the output of ```blackbox-hypot``` and the true value computed with the high precision library, and the red lines show the 16th and 84th percentile, i.e., what we usually call the 1-sigma confidence interval. As advertised, the relative error is of the order of 5e-8, for any number between 1e-10 and 1e10. You are immediately reassured: it seems my documentation above was true.
 
@@ -71,7 +71,7 @@ Black points show the measured difference between the output of ```blackbox-hypo
 
 But that is not the end of the story. There is one problem with this method: to truly demonstrate that the tool works we would have to try every single possible combination of input numbers, and there are simply way too many. The test above has covered a lot of ground, but in fact you can see there are gaps: not all numbers were tested. It is reasonable to expect that, if the tool works for values of 1, 10 and 100, it should work for 20, 22, 35.125, pi, etc. But we don't _know_ for sure until we've tried. In fact, as you can see from the plot above, the errors are not truly random: they show some structure with some specific numbers having lower errors than others. Perhaps there are some numbers we haven't tried yet which have a much higher error? Let's see what happens when we re-run this test for much smaller values:
 
-![Relative error of blackbox-hypot]({{ site.url }}/assets/blog/2017-06-11-trusting-the-black-box/err_small.png)
+![Relative error of blackbox-hypot]({{ site.url }}/assets/blog/2017-06-12-trusting-the-black-box/err_small.png)
 
 All of a sudden, all hell breaks loose: the relative uncertainty grows much larger than 5e-8 if the value becomes smaller than 1e-19. The origin of the issue is that the numbers are squared and summed: if the square of one number becomes smaller than 1e-38 (the smallest absolute value for a single precision float on my machine) we cross the limit of the numerical precision and the sum will not work as expected. In this case, the relative uncertainty climbs up by orders of magnitude, and can quickly reach unity (meaning: we are completely wrong). This highlights one important fact: the tests you perform _must_ cover the range of values that you expect for your input data (with some margin, to be safe). If they don't, you risk encountering a situation like this one, in which the tool behaves fine for most of the input values you can throw at it, but will fail miserably in a few cases you haven't thought of.
 
