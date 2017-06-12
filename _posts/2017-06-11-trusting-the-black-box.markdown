@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Tools for science: trusting the black box"
-date:   2017-06-11 19:00:00
+date:   2017-06-12 21:00:00
 categories: science programming
 ---
 
