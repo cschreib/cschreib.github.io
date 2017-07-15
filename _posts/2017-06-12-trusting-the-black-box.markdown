@@ -3,6 +3,7 @@ layout: post
 title:  "Tools for science: trusting the black box"
 date:   2017-06-12 21:00:00
 categories: science programming
+excerpt: "Scientific tools are very specialized, cutting edge softwares which are used at most by a thousand people, and most often only by no more than ten. Compared to softwares like the linux kernel or any word processor, they do not benefit from a large user base which can report bugs and problems. Therefore you cannot simply trust that they work, you have to verify it for yourself. How do you go about it?"
 ---
 
 ## Tools and black boxes
